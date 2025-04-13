@@ -2,35 +2,44 @@ import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
+import axios from "axios";
 
-function Profile() {
-  const [user, setUser] = useState({
-    name: "Indra",
-    age: 21,
-    job: "student",
-  });
-
-  const increament = () => {
-    setUser({ ...user, age: user.age + 1 });
-  };
-
-  const newJob = () => {
-    setUser({ ...user, job: "Programmer" });
-  };
-
+function Task(props) {
+  const { id, task, status } = props.todo;
+  const statusText = status ? "true" : "false";
   return (
     <>
-      <p>name: {user.name}</p>
-      <p>age: {user.age}</p>
-      <p>job: {user.job}</p>
-      <button onClick={increament}>Get older</button>
-      <button onClick={newJob}>New job</button>
+      <p>no: {id}</p>
+      <h1>Task: {task}</h1>
+      <h3>Status: {statusText}</h3>
     </>
   );
 }
 
 function App() {
-  return <Profile />;
+  const [todos, setTodos] = useState([]);
+
+  function getTodos() {
+    axios({
+      method: "GET",
+      url: "http://localhost:3000/todos",
+    })
+      .then((result) => {
+        setTodos(result.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  return (
+    <>
+      {todos.map((todo) => {
+        return <Task todo={todo} />;
+      })}
+      <button onClick={getTodos}>Klik</button>
+    </>
+  );
 }
 
 export default App;
