@@ -1,8 +1,13 @@
-function Task() {
+function Task(props) {
+  const { id, task, status } = props.todo;
+  const statusText = status ? "true" : "false";
   return (
     <>
-      <h1>Welcome ,</h1>
-      <p>age</p>
+      <p>no: {id}</p>
+      <h1>Task: {task}</h1>
+      <h3>Status: {statusText}</h3>
     </>
   );
 }
+
+export default Task;
