@@ -1,3 +1,24 @@
 {
-  "todos": [{ "id": 1, "task": "makan", "status": true }]
+  "todos": [
+    {
+      "id": 1,
+      "task": "makan",
+      "status": true
+    },
+    {
+      "task": "Minum",
+      "status": false,
+      "id": 2
+    },
+    {
+      "task": "taskk",
+      "status": false,
+      "id": 3
+    },
+    {
+      "task": "makan bang",
+      "status": false,
+      "id": 4
+    }
+  ]
 }

@@ -23,7 +23,7 @@ function Table() {
 
   return (
     <>
-      <table>
+      <table border={1} cellSpacing={0}>
         <thead>
           <tr>
             <th>ID</th>
@@ -38,7 +38,7 @@ function Table() {
                 <tr>
                   <td>{todo.id}</td>
                   <td>{todo.task}</td>
-                  <td>{JSON.stringify(todo.status)}</td>
+                  <td>{todo.status ? "Done" : "Progress"}</td>
                 </tr>
               </>
             );
